@@ -4,9 +4,6 @@ import os
 import asyncio
 import random
 
-with open('bot/token.txt', 'r') as f:
-  TOKEN = f.read()
-
 INTENTS = nextcord.Intents.default()
 INTENTS.members = True
 
@@ -139,4 +136,5 @@ class MyClient(nextcord.Client):
               
               
 client = MyClient(intents=INTENTS)
-client.run(TOKEN)
+access_token = os.environ["BOT_TOKEN"]
+client.run(access_token)
