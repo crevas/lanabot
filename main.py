@@ -7,7 +7,7 @@ COMMAND_PREFIX_kk = "라나야"
 COMMAND_PREFIX_ke = "fkskdi"
 
 @client.event
-async def on_ready(self):
+async def on_ready():
   print('Ready')
   await client.change_presence(game=discord.Game(name='다시 태어나려고', type=1))
 
