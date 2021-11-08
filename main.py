@@ -9,7 +9,7 @@ COMMAND_PREFIX_ke = "fkskdi"
 @client.event
 async def on_ready():
   print('Ready')
-  await client.change_presence(game=discord.Game(name='다시 태어나려고', type=1))
+  await client.change_presence(status=discord.Status.online, activity=discord.Game(name="새롭게 태어나려고"))
 
 access_token = os.environ["BOT_TOKEN"]
 client.run(access_token)
