@@ -136,7 +136,7 @@ class MyClient(nextcord.Client):
             else:
               await message.reply("`관리자`권한이 없습니다.")
 
-
-keep_alive()
+              
+              
 client = MyClient(intents=INTENTS)
 client.run(TOKEN)
