@@ -2,7 +2,6 @@ import discord
 import os
 import random
 import json
-import openpyxl
 
 client = discord.Client()
 
