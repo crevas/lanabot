@@ -13,7 +13,7 @@ async def on_ready():
   await client.change_presence(status=discord.Status.online, activity=discord.Game(name="새롭게 태어나려고"))
 
 @client.event
-async def on_message():
+async def on_message(self, message):
   if str(message.channel.type) == "text":
     if message.content == "테스트":
       await message.channel.send("테스트 중입니다!")
