@@ -33,6 +33,7 @@ async def on_message(message):
       embed = discord.Embed(title="라나 초대!", description="라나와 함께 놀고 싶다면 아래 링크 클릭!", color=0x0FF1CE)
       embed.add_field(name=':link: https://discord.com/api/oauth2/authorize?client_id=841739951040888844&permissions=8&scope=bot', inline=false)
       embed.set_footer(text="made by crevas",image_url="https://cdn.discordapp.com/attachments/907481613913436180/907481813591662592/130_20210809091743.png")
+      await message.channel.send(embed=embed)
 
 access_token = os.environ["BOT_TOKEN"]
 client.run(access_token)
