@@ -65,14 +65,10 @@ async def on_message(message):
       if message.content.split(" ")[1] == "배워":
         con = sqlite3.connect("memory.db")
         cur = con.cursor()
-        sql1="CREATE TABLE ark(id text, name text);"
-        sql2="INSERT INTO ark Values(message.content.split(" ")[2], message.content.split(" ")[3]);"
-        cur.execute(sql1)
-        cur.execute(sql2)
+        cur.execute("CREATE TABLE IF NOT EXISTS memory \(input integer PRIMARY KEY, output text)")
+        c.execute("INSERT INTO memory \
+          VALUES(1, '', '')")
         con.commit()
-        cur.execute('SELECT * FROM ark')
-        for row in cur:
-          await message.channel.send(row)
       
 access_token = os.environ["BOT_TOKEN"]
 client.run(access_token)
