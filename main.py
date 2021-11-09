@@ -14,15 +14,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  if message.content.split(" ")[1] != command_prefix:
-    try:
-      with open('memory.json', 'r') as f:
-        json_data = json.load(f)
-        message = str(message.content.split(" ")[1])
-        send = json_data['str'][f'{message}']
-        await message.channel.send(str(send))
-    except KeyError:
-      await message.channel.send("배우지 않은 단어에요!")
   if message.content == "테스트":
     await message.channel.send("정상 작동 중!")
   if message.content == "라나야":
@@ -64,6 +55,15 @@ async def on_message(message):
           
           embed = discord.Embed(title=f"{input}은(는) {output}이군요?", description="기억해둘게요!", color=0x0FF1CE)
           await message.channel.send(embed=embed)
+      else:
+        try:
+          with open('memory.json', 'r') as f:
+            json_data = json.load(f)
+            message = str(message.content.split(" ")[1])
+            send = json_data['str'][f'{message}']
+            await message.channel.send(str(send))
+        except KeyError:
+          await message.channel.send("배우지 않은 단어에요!")
         
 access_token = os.environ["BOT_TOKEN"]
 client.run(access_token)
