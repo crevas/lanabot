@@ -19,7 +19,7 @@ async def on_message(message):
     return None
   if message.content == "테스트":
     await message.channel.send("정상 작동 중!")
-  if message.content == EVENT_PREFIX:
+  if message.content == "라나야":
     rm = random.randint(1, 4)
     if rm == 1:
       await message.channel.send("네?")
