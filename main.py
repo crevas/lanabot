@@ -48,7 +48,7 @@ async def on_message(message):
           return False
         else:
           with open('memory.json', 'r', encoding='utf-8') as f:
-            data = json.road(f)
+            data = json.load(f)
             for i in data['str']:
               if str(input) in i:
                 embed = discord.Embed(title=f"{input}은(는) 이미 알고있는 단어에요!", description="가르칠 수 없어요!", color=0x0FF1CE)
