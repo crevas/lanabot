@@ -56,7 +56,7 @@ async def on_message(message):
                 return False
           data['str'][f'{input}'] = str(output)
           with open('memory.json', 'w', encoding='utf-8') as ff:
-            json.dump(data, ff, ensure_ancii=False, indent='\t')
+            json.dump(data, ff, ensure_ascii=False, indent='\t')
           
           embed = discord.Embed(title=f"{input}은(는) {output}이군요?", description="기억해둘게요!", color=0x0FF1CE)
           await message.channel.send(embed=embed)
