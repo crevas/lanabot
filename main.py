@@ -15,11 +15,14 @@ async def on_ready():
 @client.event
 async def on_message(message):
   if message.content.split(" ")[1] != command_prefix:
-    with open('memory.json', 'r') as f:
-      json_data = json.load(f)
-      message = str(message.content.split(" ")[0])
-      send = json_data['str'][f'{message}']
-      await message.channel.send(str(send))
+    try:
+      with open('memory.json', 'r') as f:
+        json_data = json.load(f)
+        message = str(message.content.split(" ")[1])
+        send = json_data['str'][f'{message}']
+        await message.channel.send(str(send))
+    except KeyError:
+      await message.channel.send("배우지 않은 단어에요!")
   if message.content == "테스트":
     await message.channel.send("정상 작동 중!")
   if message.content == "라나야":
