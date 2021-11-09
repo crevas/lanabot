@@ -3,6 +3,7 @@ import os
 import random
 import json
 import sqlite3
+import openpyxl
 
 # DB 생성
 #con = sqlite3.connect("memory.db")
@@ -42,6 +43,11 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+  with open('memory.json', 'r', encoding='utf-8'):
+    data = json.road(f)
+    for i in data['str']:
+      if str(m) in i:
+        await  
   if message.content == "테스트":
     await message.channel.send("정상 작동 중!")
   if message.content == "라나야":
@@ -63,12 +69,26 @@ async def on_message(message):
         embed.set_footer(text="made by crevas")
         await message.channel.send(embed=embed)
       if message.content.split(" ")[1] == "배워":
-        con = sqlite3.connect("memory.db")
-        cur = con.cursor()
-        cur.execute("CREATE TABLE IF NOT EXISTS memory \(input integer PRIMARY KEY, output text)")
-        c.execute("INSERT INTO memory \
-          VALUES(1, message.content.split(" ")[2], message.content.split(" ")[3])")
-        con.commit()
-      
+        input = message.content.split(" ")[2]
+        output = message.content.split(" ")[3]
+        if input == None or output == None:
+          return False
+        elif input == None and output == None:
+          return False
+        else:
+          with open('memory.json', 'r', encoding='utf-8') as f:
+            data = json.road(f)
+            for i in data['str']:
+              if str(m) in i:
+                embed = discord.Embed(title=f"{m}은(는) 이미 알고있는 단어에요!", description="가르칠 수 없어요!", color=0x0FF1CE)
+                await message.channel.send(embed=embed)
+                return False
+          data['str'][f'{m}'] = str(n)
+          with open('memory.json', 'w', encoding='utf-8') as ff:
+            json.dump(data, ff, ensure_ancii=False, indent='\t')
+          
+          embed = discord.Embed(title=f"{m}은(는) {n}이군요?", description="기억해둘게요!", color=0x0FF1CE)
+          await message.channel.send(embed=embed)
+        
 access_token = os.environ["BOT_TOKEN"]
 client.run(access_token)
