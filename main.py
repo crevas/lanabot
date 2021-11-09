@@ -2,8 +2,6 @@ import discord
 import os
 import random
 
-from config import Config
-
 client = discord.Client()
 
 command_prefix = "라나야"
@@ -15,8 +13,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  if message.author.bot:
-    return None
   if message.content == "테스트":
     await message.channel.send("정상 작동 중!")
   if message.content == "라나야":
