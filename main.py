@@ -1,6 +1,7 @@
 import discord
 import os
 import random
+import json
 
 client = discord.Client()
 
@@ -33,6 +34,8 @@ async def on_message(message):
         embed.add_field(name="라나와 놀고 싶다면 링크 클릭!", value=":link: https://discord.com/api/oauth2/authorize?client_id=841739951040888844&permissions=8&scope=bot", inline=False)
         embed.set_footer(text="made by crevas")
         await message.channel.send(embed=embed)
+      if message.content.split(" ")[1] == "배워":
+        
       
 access_token = os.environ["BOT_TOKEN"]
 client.run(access_token)
