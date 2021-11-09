@@ -15,6 +15,8 @@ async def on_ready():
 @client.event
 async def on_message():
   if str(message.channel.type) == "text":
+    if message.content == "테스트":
+      await message.channel.send("테스트 중입니다!")
     if message.content == "라나야" or message.content == "fkskdi":
       rm = random.randint(1, 4)
       if rm == 1:
