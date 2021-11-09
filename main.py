@@ -65,7 +65,7 @@ async def on_message(message):
       if message.content.split(" ")[1] == "배워":
         con = sqlite3.connect("memory.db")
         cur = con.cursor()
-        sql1="CREATE TABLE ark(in text,out text);"
+        sql1="CREATE TABLE ark(id text, name text);"
         sql2="INSERT INTO ark Values(message.content.split(" ")[2], message.content.split(" ")[3]);"
         cur.execute(sql1)
         cur.execute(sql2)
