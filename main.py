@@ -2,7 +2,6 @@ import discord
 import os
 import random
 import json
-import sqlite3
 import openpyxl
 
 client = discord.Client()
@@ -16,10 +15,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  if message.content.split(" ")[0] != 
-  with open('memory.json', 'r') as f:
-    json_data = json.load(f)
-    
+  if message.content.split(" ")[0] != command_prefix:
+    with open('memory.json', 'r') as f:
+      json_data = json.load(f)
+      await message.channel.send(json_data['str'][f'{m}'])
   if message.content == "테스트":
     await message.channel.send("정상 작동 중!")
   if message.content == "라나야":
