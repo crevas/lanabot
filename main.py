@@ -17,8 +17,9 @@ async def on_message(message):
   if message.content.split(" ")[0] != command_prefix:
     with open('memory.json', 'r') as f:
       json_data = json.load(f)
-      message = message.content.split(" ")[0]
-      await message.channel.send(json_data['str'][f'str(message)'])
+      message = str(message.content.split(" ")[0])
+      send = json_data['str'][f'{message}']
+      await message.channel.send(str(send))
   if message.content == "테스트":
     await message.channel.send("정상 작동 중!")
   if message.content == "라나야":
