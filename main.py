@@ -17,7 +17,8 @@ async def on_message(message):
   if message.content.split(" ")[0] != command_prefix:
     with open('memory.json', 'r') as f:
       json_data = json.load(f)
-      await message.channel.send(json_data['str'][f'{m}'])
+      message = message.content.split(" ")[0]
+      await message.channel.send(json_data['str'][f'{message}'])
   if message.content == "테스트":
     await message.channel.send("정상 작동 중!")
   if message.content == "라나야":
@@ -49,15 +50,15 @@ async def on_message(message):
           with open('memory.json', 'r', encoding='utf-8') as f:
             data = json.road(f)
             for i in data['str']:
-              if str(m) in i:
-                embed = discord.Embed(title=f"{m}은(는) 이미 알고있는 단어에요!", description="가르칠 수 없어요!", color=0x0FF1CE)
+              if str(input) in i:
+                embed = discord.Embed(title=f"{input}은(는) 이미 알고있는 단어에요!", description="가르칠 수 없어요!", color=0x0FF1CE)
                 await message.channel.send(embed=embed)
                 return False
-          data['str'][f'{m}'] = str(n)
+          data['str'][f'{input}'] = str(output)
           with open('memory.json', 'w', encoding='utf-8') as ff:
             json.dump(data, ff, ensure_ancii=False, indent='\t')
           
-          embed = discord.Embed(title=f"{m}은(는) {n}이군요?", description="기억해둘게요!", color=0x0FF1CE)
+          embed = discord.Embed(title=f"{input}은(는) {output}이군요?", description="기억해둘게요!", color=0x0FF1CE)
           await message.channel.send(embed=embed)
         
 access_token = os.environ["BOT_TOKEN"]
