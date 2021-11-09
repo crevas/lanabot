@@ -4,7 +4,7 @@ import random
 
 client = discord.Client()
 
-EVENT_PREFIX = "라나야"
+EVENT_PREFIX = "라나야 "
 COMMAND_PREFIX = "l/"
 
 @client.event
