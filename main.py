@@ -9,7 +9,7 @@ command_prefix = "라나야"
 @client.event
 async def on_ready():
   print('Ready')
-  await self.change_presence(status=discord.Status.online, activity=discord.Game(name="새로운 라나가 되려고"))
+  await client.change_presence(status=discord.Status.online, activity=discord.Game(name="새로운 라나가 되려고"))
 
 @client.event
 async def on_message(message):
