@@ -67,7 +67,7 @@ async def on_message(message):
         cur = con.cursor()
         cur.execute("CREATE TABLE IF NOT EXISTS memory \(input integer PRIMARY KEY, output text)")
         c.execute("INSERT INTO memory \
-          VALUES(1, '', '')")
+          VALUES(1, message.content.split(" ")[2], message.content.split(" ")[3])")
         con.commit()
       
 access_token = os.environ["BOT_TOKEN"]
