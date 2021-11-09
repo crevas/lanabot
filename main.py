@@ -5,33 +5,6 @@ import json
 import sqlite3
 import openpyxl
 
-# DB 생성
-#con = sqlite3.connect("memory.db")
-# 커서 획득
-#cur = con.cursor()
-#예제 sql문
-#sql1="CREATE TABLE ark(Id text,name text);"
-#sql2="INSERT INTO ark Values('gain_time@naver.com','myblog4');"
-#sql3="INSERT INTO ark Values('gain_time@naver.com','myblog4');"
-#sql4="INSERT INTO ark Values('gain_time@naver.com','myblog4');"
-#sql5="INSERT INTO ark Values('123123@naver.com','myblog4');"
-#sql6="INSERT INTO ark Values('444241@naver.com','myblog4');"
-#sql실행.
-#cur.execute(sql1)
-#cur.execute(sql2)
-#cur.execute(sql3)
-#cur.execute(sql4)
-#cur.execute(sql5)
-#cur.execute(sql6)
-#commit
-#con.commit()
-#데이터 확인해보기.
-#cur.execute('SELECT * FROM ark')
-#for row in cur:
-#  print(row)
-#db연결해제.
-#con.close()
-
 client = discord.Client()
 
 command_prefix = "라나야"
@@ -43,11 +16,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  with open('memory.json', 'r', encoding='utf-8'):
-    data = json.road(f)
-    for i in data['str']:
-      if str(m) in i:
-        await  
+  if message.content.split(" ")[0] != 
+  with open('memory.json', 'r') as f:
+    json_data = json.load(f)
+    
   if message.content == "테스트":
     await message.channel.send("정상 작동 중!")
   if message.content == "라나야":
