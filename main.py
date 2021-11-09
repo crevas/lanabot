@@ -14,7 +14,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  if message.content.split(" ")[0] != command_prefix:
+  if message.content.split(" ")[1] != command_prefix:
     with open('memory.json', 'r') as f:
       json_data = json.load(f)
       message = str(message.content.split(" ")[0])
