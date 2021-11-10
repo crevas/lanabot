@@ -1,9 +1,9 @@
-import discord
+import nextcord
 import os
 import random
 import json
 
-client = discord.Client()
+client = nextcord.Client()
 
 command_prefix = "라나야"
 
@@ -16,7 +16,7 @@ async def on_ready():
 async def on_message(message):
   if message.content == "테스트":
     await message.channel.send("정상 작동 중!")
-  if message.content == "라나야":
+  elif message.content == "라나야":
     rm = random.randint(1, 4)
     if rm == 1:
       await message.channel.send("네?")
@@ -28,6 +28,16 @@ async def on_message(message):
       await message.channel.send("저랑 놀아주세요!")
   if message.content.split(" ")[0] == command_prefix:
     if message.author.bot == 0:
+      if message.content.split(" ")[1] == None:
+        rm = random.randint(1, 4)
+        if rm == 1:
+          await message.channel.send("네?")
+        elif rm == 2:
+          await message.channel.send("왜요?")
+        elif rm == 3:
+          await message.channel.send("저요?")
+        elif rm == 4:
+          await message.channel.send("저랑 놀아주세요!")
       # Command ( if message.content.split(" ")[1] == "Command Name" )
       if message.content.split(" ")[1] == "초대":
         embed = discord.Embed(title="[봇] 라나", description="저랑 놀아주세요!", color=0x0FF1CE)
